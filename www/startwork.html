@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Workout</title>
+   <link rel="stylesheet" href="css/startwork.css"/>
+  <link rel="stylesheet" href="css/jquery-ui.css"/>
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script>
+ $(document).ready(function(){
+
+ var myAudio=document.getElementById("audio1");
+ var clrarray=[];
+    var namearray=[];
+    var sqncarray=[];
+    var descarray=[];
+    var videoarray=[];
+     $.ajax({
+				type: "GET",
+				url: "workout_content.xml",
+				dataType: "xml",
+				success: function(xml) {
+				var output1 = '<div align="center" id="btn">';
+                $(xml).find('exercise').each(function(){
+                var sequence = $(this).find('sequence').text();
+                sqncarray.push(sequence);
+                var name = $(this).find('name').text();
+                namearray.push(name);
+                var color=$(this).find('color').text();
+                clrarray.push(color);
+                var description=$(this).find('description').text();
+                descarray.push(description);
+                var video=$(this).find('video').text(); 
+                videoarray.push(video);
+                var btnclr="btnclr"+sequence;
+                output1 +='<input type="button" id='+btnclr+' class="button2" value='+sequence+'>';
+               });
+                output1 +='</div>';
+                $('#btndata').html(output1);
+				}
+			});
+  var queryString = new Array();
+        if (queryString.length == 0) {
+            if (window.location.search.split('?').length > 1) {
+                var params = window.location.search.split('?')[1].split('&');
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i].split('=')[0];
+                    var value = decodeURIComponent(params[i].split('=')[1]);
+                    queryString[key] = value;
+                }
+            }
+        }
+        if (queryString["interval"] != null && queryString["count"] != null && queryString["count1"] != null && queryString["up"] != null && queryString["down"] != null && queryString["repset"] != null) {
+        $('#srl').html(queryString["interval"]);
+        $('#srl1').html(queryString["count"]);
+        $('#srl2').html(queryString["count1"]);
+        $('#srl3').html(queryString["up"]);
+        $('#srl4').html(queryString["down"]);
+        $('#srl5').html(queryString["repset"]);
+        $('#repset').html(queryString["repset"]);
+        $('#nextex').html(queryString["down"]);
+        
+        $( "#dialog-message1" ).dialog({
+      modal: true,
+    });
+     $(".ui-dialog-titlebar").hide();
+      
+        }
+      else {
+            $( "#dialog-message" ).dialog({
+      modal: true,
+    });
+     $(".ui-dialog-titlebar").hide();
+     }
+   
+  var amount=parseInt($('#amount').val());
+var i = parseInt($('#count').html());
+var a = parseInt($('#count1').html());
+var m = parseInt($('#interval').html());
+var c = parseInt($('#continue').html());
+var s = parseInt($('#set').html());
+var r = parseInt($('#repset').html());
+var tim;
+function run(){
+var length=sqncarray.length*40;
+
+i = parseInt($('#count').html());
+a = parseInt($('#count1').html());
+m = parseInt($('#interval').html());
+c = parseInt($('#continue').html());
+s = parseInt($('#set').html());
+r = parseInt($('#repset').html());
+
+    tim = setInterval(function(){
+        if(c>=length){clearInterval(tim);
+            $('#set').html('1');
+            $('#repset').html(++r);
+            myAudio.pause();
+            $( "#dialog-message2" ).dialog({
+            modal: true,
+            });
+            $(".ui-dialog-titlebar").hide();
+            }
+        
+        $('#count1').html(++a);
+        $('#count').html(--i);
+        $('#continue').html(++c);
+        if(a==10)
+       {
+           $('#count').html("30");
+           i = parseInt($('#count').html());
+         <!--  var url3 = "videopage.html?color=" + encodeURIComponent(clrarray[m-1]) + "&description=" + encodeURIComponent(descarray[m-1])+ "&video=" + encodeURIComponent(videoarray[m-1])+ "&name=" + encodeURIComponent(namearray[m-1])+ "&exsequence=" + encodeURIComponent(m-1)+ "&exsequence1=" + encodeURIComponent(m);-->  
+           
+           $('#runex').html(namearray[m-1]);
+          <!-- var url4 = "videopage.html?color=" + encodeURIComponent(clrarray[m]) + "&description=" + encodeURIComponent(descarray[m])+ "&video=" + encodeURIComponent(videoarray[m])+ "&name=" + encodeURIComponent(namearray[m])+ "&exsequence=" + encodeURIComponent(m-1)+ "&exsequence1=" + encodeURIComponent(m); -->
+           $('#nextex').html( namearray[m]);
+           
+           
+       }
+       else if(a==40)
+        {
+       var btnid="#btnclr"+m;
+       $(btnid).css("background-color",'#FFFFFF');
+        $('#count1').html("0");
+        $('#count').html("10");
+        i = parseInt($('#count').html());
+        a= parseInt($('#count1').html());
+         $('#runex').html("REST!");
+        $('#interval').html(++m);
+        var btnid="#btnclr"+m;
+       $(btnid).css("background-color","#E0E0E0");
+        
+        
+         }
+    },1000);    
+}
+
+$('#stopper').click(function(){        
+    clearInterval(tim);
+   $(this).hide();
+   $('#starter').show();
+   myAudio.pause();
+});
+
+$('#resetter').click(function(){    
+    clearInterval(tim);    
+    i=10;
+     $('#count').html(i);
+});
+
+$('#starter').click(function(){
+$(this).hide();
+$('#stopper').show(); 
+myAudio.play();
+clearInterval(tim);
+ run(); 
+}); 
+$('#ready').click(function(){  
+$('#dialog-message').dialog("close");
+ myAudio.play(); 
+$('#btnclr1').css("background-color","#E0E0E0");  
+ <!--var url = "videopage.html?color=" + encodeURIComponent(clrarray[0]) + "&description=" + encodeURIComponent(descarray[0])+ "&video=" + encodeURIComponent(videoarray[0])+ "&name=" + encodeURIComponent(namearray[0])+ "&exsequence=" + encodeURIComponent(m-1)+ "&exsequence1=" + encodeURIComponent(m); -->
+ $('#firstnext').html(namearray[0]);
+ clearInterval(tim);
+ run();
+  
+});   
+$('#close').click(function(){
+ clearInterval(tim);    
+    i=10;
+     $('#count').html(i);
+window.location.href="index.html";
+});
+$('#notnow').click(function(){
+ clearInterval(tim);    
+    i=10;
+     $('#count').html(i);
+window.location.href="index.html";
+});
+$('#notnow1').click(function(){
+ clearInterval(tim);    
+    i=10;
+     $('#count').html(i);
+window.location.href="index.html";
+});
+$('#notnow2').click(function(){
+              clearInterval(tim);
+              i=10;
+              $('#count').html(i);
+              window.location.href="index.html";
+              });
+$('#resume1').click(function(){
+      $('#dialog-message1').dialog("close");
+      var nh2='Set '+$('#repset').html()+' of 5';
+      $('#namehead').html(nh2);
+      $('#count').html($('#srl1').html());
+      $('#count1').html($('#srl2').html());
+      $('#interval').html($('#srl').html())
+      $('#runex').html($('#srl3').html());
+      $('#repset').html($('#srl5').html());
+      var btncl="#btnclr"+$('#srl').html();
+      $(btncl).css("background-color","#E0E0E0");
+      myAudio.play();
+      clearInterval(tim);
+      run();
+      $('#dialog-message').dialog("close");
+      });
+      
+      $('#resume2').click(function(){
+      
+              $('#dialog-message2').dialog("close");
+              myAudio.play();
+              var nh='Set '+$('#repset').html()+' of 5';
+              $('#namehead').html(nh);
+              $('#btnclr1').css("background-color","#E0E0E0");
+              $('#nextex').html(namearray[0]);
+              $('#continue').html("0");
+              $('#runex').html("GET READY!");
+              $('#interval').html("1");
+              $('#count').html("10");
+              $('#count1').html("0");
+              var nh1='Set '+$('#set').html()+' of '+$('#repset').html();
+              $('#namehead1').html(nh1);
+              <!--var url = "videopage.html?color=" + encodeURIComponent(clrarray[0]) + "&description=" + encodeURIComponent(descarray[0])+ "&video=" + encodeURIComponent(videoarray[0])+ "&name=" + encodeURIComponent(namearray[0])+ "&exsequence=" + encodeURIComponent(m-1)+ "&exsequence1=" + encodeURIComponent(m); -->
+              clearInterval(tim);
+              run();
+             
+              });
+      
+      
+  $('#runex').click(function(){
+  if($('#runex').html()!="GET READY!" && $('#runex').html()!="REST!")
+  {
+  var url31 = "videopage.html?color=" + encodeURIComponent(clrarray[m-1]) + "&description=" + encodeURIComponent(descarray[m-1])+ "&video=" + encodeURIComponent(videoarray[m-1])+ "&name=" + encodeURIComponent(namearray[m-1])+ "&interval=" + encodeURIComponent(m)+ "&count=" + encodeURIComponent(i)+ "&count1=" + encodeURIComponent(a)+ "&up=" + encodeURIComponent($('#runex').html())+ "&down=" + encodeURIComponent($('#nextex').html())+ "&repset=" + encodeURIComponent($('#repset').html());
+  window.location.href=url31;
+  }
+  });
+  $('#firstnext').click(function(){
+   var url11 = "videopage.html?color=" + encodeURIComponent(clrarray[0]) + "&description=" + encodeURIComponent(descarray[0])+ "&video=" + encodeURIComponent(videoarray[0])+ "&name=" + encodeURIComponent(namearray[0])+ "&interval=" + encodeURIComponent(m)+ "&count=" + encodeURIComponent(i)+ "&count1=" + encodeURIComponent(a) + "&up=" + encodeURIComponent($('#runex').html())+ "&down=" + encodeURIComponent($('#nextex').html())+ "&repset=" + encodeURIComponent($('#repset').html());
+  window.location.href=url11;
+  });
+  $('#nextex1').click(function(){
+  var url4 = "videopage.html?color=" + encodeURIComponent(clrarray[m]) + "&description=" + encodeURIComponent(descarray[m])+ "&video=" + encodeURIComponent(videoarray[m])+ "&name=" + encodeURIComponent(namearray[m])+ "&interval=" + encodeURIComponent(m)+ "&count=" + encodeURIComponent(i)+ "&count1=" + encodeURIComponent(a) + "&up=" + encodeURIComponent($('#runex').html())+ "&down=" + encodeURIComponent($('#nextex').html())+ "&repset=" + encodeURIComponent($('#repset').html()); 
+  window.location.href=url4;
+  });
+  $('#nextex').click(function(){
+  if(a<=10)
+  {
+  var url5 = "videopage.html?color=" + encodeURIComponent(clrarray[m-1]) + "&description=" + encodeURIComponent(descarray[m-1])+ "&video=" + encodeURIComponent(videoarray[m-1])+ "&name=" + encodeURIComponent(namearray[m-1])+ "&interval=" + encodeURIComponent(m)+ "&count=" + encodeURIComponent(i)+ "&count1=" + encodeURIComponent(a) + "&up=" + encodeURIComponent($('#runex').html())+ "&down=" + encodeURIComponent($('#nextex').html())+ "&repset=" + encodeURIComponent($('#repset').html()); 
+  window.location.href=url5;
+  }
+  else{
+   var url6 = "videopage.html?color=" + encodeURIComponent(clrarray[m]) + "&description=" + encodeURIComponent(descarray[m])+ "&video=" + encodeURIComponent(videoarray[m])+ "&name=" + encodeURIComponent(namearray[m])+ "&interval=" + encodeURIComponent(m)+ "&count=" + encodeURIComponent(i)+ "&count1=" + encodeURIComponent(a) + "&up=" + encodeURIComponent($('#runex').html())+ "&down=" + encodeURIComponent($('#nextex').html())+ "&repset=" + encodeURIComponent($('#repset').html()); 
+   window.location.href=url6;
+   }
+  
+  });
+   $('#mute').click(function(){
+              myAudio.muted=true;
+              $(this).toggle();
+              $('#play1').toggle();
+              });
+              $('#play1').click(function(){
+              myAudio.muted=false;
+              $(this).hide();
+              $('#mute').show();
+              });
+  
+    
+  });
+ 
+  
+  </script>
+</head>
+<body>
+<div id="namehead" style="position:fixed; width:100%; background-color:#ffffff; padding-top:22px; top:0px; left:0px; ">Set 1 of 5</div>
+<div class="button1" id="stopper">Pause</div>
+<div class="button1" id="starter" style="display: none">Resume</div>
+<div class="button12" id="close" style="float:left;"><img src="img/back3.png" height="30px" width="30px"></div>
+<div class="button4" id="mute" style="float:right;"><img src="img/speaker.png" height="50px" width="50px"></div>
+<div class="button4" id="play1" style="float:right;display:none;"><img src="img/play1.png" height="50px" width="50px"></div>
+<div id="runex">GET READY!</div>
+<div id="interval">1</div>
+
+
+
+ 
+<input type="hidden" value="200" id="amount"/>
+<div id="count">10</div>
+<audio controls loop id="audio1" style="display:none;">
+
+        <source src="http://fitnessmirror.com/wp-content/uploads/2011/10/11-Lets-Get-It-Started-Workout-Mix.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+<div id="dialog-message" style="display: none">
+<center><b>Are You Ready?</b></center>
+<div id="diadesc">
+<center>
+Make sure you are ready to go, have a</br>
+   step or chair ready for step ups and a</br>
+   chair or bench for dips
+ <button class="button" id="ready">Ready!</button>
+ <button class="button" id="notnow">Not Now</button>
+   </div>
+</div>
+
+<div id="dialog-message1" style="display: none">
+<center><b>Are You Ready?</b></center>
+<div id="diadesc1">
+<center>
+Make sure you are ready to go, have a</br>
+   step or chair ready for step ups and a</br>
+   chair or bench for dips
+ <button class="button" id="resume1">Resume!</button>
+ <button class="button" id="notnow1">Not Now</button>
+   </div>
+</div>
+
+<div id="dialog-message2" style="display: none">
+        <center>
+          <b>Are You Ready?</b>
+        </center>
+        <div id="diadesc1">
+          <center>
+            Make sure you are ready for next set, have</br>
+            a step or chair ready for step ups and a</br>
+            chair or bench for dips
+            <button class="button" id="resume2">Next Set</button>
+            <button class="button" id="notnow2">Not Now</button>
+          </div>
+      </div>
+
+
+<div id="count1">0</div>
+<div id="srl" style="display: none"></div>
+<div id="srl1" style="display: none"></div>
+<div id="srl2" style="display: none"></div>
+<div id="srl3" style="display: none"></div>
+<div id="srl4" style="display: none" ></div>
+<div id="srl5" style="display: none" ></div>
+<div id="continue" style="display:none;">0</div>
+
+<div id="nextup">Next Up:</div>
+
+ <div id='nextex'><div id="firstnext"></div><div id="nextex1"></div></div>
+ 
+ 
+<div align="center" id="btndata" style="position:fixed; width:100%; margin:0 auto; background-color:#E8E8E8; left:0px; bottom:0px; text-align:center; "> </div>
+<div id="set" style="display:none;">1</div>
+<div id="repset" style="display:none;">1</div>
+</body>
+</html>

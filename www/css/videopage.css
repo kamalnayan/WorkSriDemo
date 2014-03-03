@@ -1,0 +1,46 @@
+body {
+    background-color:#ffffff;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+#namehead{
+text-align:center;
+color:#000;
+font-size:17px;
+height:2em;
+}
+
+#exdesc
+{
+margin:0 auto;
+color:#000;
+padding:1em;
+}
+#playvideo
+{
+margin-top:3.5em;
+background-color:#E8E8E8;
+color:#ffffff;
+width:100%;
+}
+.button1 {
+  margin-top: -5.5px;
+  margin-left:0px;
+  text-align:center;
+  opacity:0.9;
+}
+#des
+{
+width:91%;
+background-color:#ffffff;
+overflow-y: scroll;
+margin-top:0.2em;
+border:0.07em solid #E0E0E0;
+}
+#loading
+{
+width:50%;
+color:#ffffff;
+}

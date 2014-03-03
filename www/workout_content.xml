@@ -1,0 +1,53 @@
+<root>
+    <title>7 minutes Workout</title>
+    <text>12 high intensity bodyweight exercises. 30 seconds per exercise, 10 seconds rest between exercise.</text>
+    <exercises><exercise>
+        <sequence>1</sequence>
+        <name>Push Ups</name>
+        <color>Red</color>
+        <description>Push up is an exercise performed in a prone position
+          by raising and lowering the body with the straightening
+          and bending of the arms while keeping the back straight
+          and supporting the body on the hands and toes.
+          </description>
+        <video>http://youtu.be/Eh00_rniF8E</video>        
+        </exercise>
+        <exercise>
+        <sequence>2</sequence>
+        <name>Pull Ups</name>
+        <color>Blue</color>
+        <description>The pull up is perhaps the best exercise you can
+          do if you want to build a strong, lean upper body.
+          All you need is a bar that will support your weight.
+          </description>
+        <video>http://youtu.be/mRznU6pzez0</video>
+        </exercise>
+        <exercise>
+        <sequence>3</sequence>
+        <name>Squats</name>
+        <color>Yellow</color>
+        <description>The squat is the king of lower body exercises.
+          A properly executed squat is not only safe (opposed to what some people claim)
+          but also involves all lower body muscles in addition to upper body ones as well.
+          In order to have well developed legs, the Squat is a must!
+          </description>
+        <video>http://youtu.be/Dy28eq2PjcM</video>
+        </exercise>
+        <exercise>
+        <sequence>4</sequence>
+        <name>Crunches</name>
+        <color>Green</color>
+        <description>The crunch is one of the most common abdominal exercises.
+          It primarily works the rectus abdominis muscle.
+          </description>
+        <video>http://youtu.be/Xyd_fa5zoEU</video>
+        </exercise>
+        <exercise>
+        <sequence>5</sequence>
+        <name>Triceps </name>
+        <color>Brown</color>
+        <description>The triceps extension is one of the best bodybuilding exercises for isolating the triceps muscles.</description>
+        <video>http://youtu.be/PserUqF1jV4</video>
+        </exercise>
+        </exercises>
+        </root>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style>
+	#playvideo
+	{
+	left: 0px;
+	top: 0px;
+	z-index: 9999;
+	background: url('load.gif') 50% 60% no-repeat rgb(249,249,249);
+	}
+	</style>
+	<link rel="stylesheet" type="text/css" media="all" href="css/videopage.css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+    var queryString = new Array();
+        if (queryString.length == 0) {
+            if (window.location.search.split('?').length > 1) {
+                var params = window.location.search.split('?')[1].split('&');
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i].split('=')[0];
+                    var value = decodeURIComponent(params[i].split('=')[1]);
+                    queryString[key] = value;
+                }
+            }
+        }
+        if (queryString["color"] != null && queryString["description"] != null && queryString["video"] != null && queryString["name"] != null && queryString["interval"] != null && queryString["count"] != null && queryString["count1"] != null && queryString["up"] != null && queryString["down"] != null && queryString["repset"] != null) {
+            var headname=queryString["name"];
+            $("#namehead").html(headname);
+            var exdesc=queryString["description"];
+            $("#exdesc").html(exdesc);
+			var clr=queryString["color"];
+			$('#clr1').html(clr);
+			<!--$("#namehead").css("background-color",clr);-->
+			$('#interval').html(queryString["interval"]);
+			$('#count').html(queryString["count"]);
+			$('#count1').html(queryString["count1"]);
+			$('#up').html(queryString["up"]);
+			$('#down').html(queryString["down"]);
+			$('#repset').html(queryString["repset"]);
+			var vdo=queryString["video"];
+			$("#playvideo").html(vdo);
+			$('#playvideo').html(function (i, html) {
+
+    return html.replace(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g, '<iframe width=100%" height="45%" src="http://www.youtube.com/embed/$1" frameborder="0" allowfullscreen></iframe>');
+
+});			
+        }
+        $('#close').click(function(){
+        var interval=$('#interval').html();
+        var count=$('#count').html();
+        var count1=$('#count1').html();
+        var up=$('#up').html();
+         var down=$('#down').html();
+         var repset=$('#repset').html();
+        var url = "startwork.html?interval=" + encodeURIComponent(interval) + "&count=" + encodeURIComponent(count) + "&count1=" + encodeURIComponent(count1)+ "&up=" + encodeURIComponent(up)+ "&down=" + encodeURIComponent(down)+ "&repset=" + encodeURIComponent(repset);
+        window.location.href=url;
+       
+       
+});
+       
+    });
+</script>
+	</head>
+
+<body>
+<div id="namehead" style="position:fixed; width:100%; background-color:#ffffff; padding-top:22px; top:0px; left:0px; "> </div>
+<div class="button1" id="close" style="float:left;"><img src="img/back3.png" height="30px" width="30px"></div>
+<div align="center" style="width:100%; margin:0 auto;"> 
+<div align="left" id="playvideo"></div>
+<div id="des"><div align="left" id="exdesc"></div></div>
+<div id="clr1" style="display:none;"></div>
+<div id="interval" style="display:none;"></div>
+<div id="count" style="display:none;"></div>
+<div id="count1" style="display:none;"></div>
+<div id="up" style="display:none;"></div>
+<div id="down" style="display:none;"></div>
+<div id="repset" style="display:none;"></div>
+
+</div>
+
+
+
+
+</body>
+<html>

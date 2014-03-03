@@ -1,0 +1,29 @@
+<root>
+    <data number="1" type="free">
+        <title>Rossiter Techniques</title>
+        <text>12 high intensity bodyweight exercises. 30 seconds per exercise, 10 seconds rest between exercise.</text>
+        <exercises>
+            <exercises>
+                <sequence>1</sequence>
+                <name>Push Ups</name><description>
+          Push up is an exercise performed in a prone position
+          by raising and lowering the body with the straightening
+          and bending of the arms while keeping the back straight
+          and supporting the body on the hands and toes.
+     </description>
+     <video>http://youtu.be/Eh00_rniF8E</video>
+     </exercises>
+     <exercises>
+         <sequence>2</sequence><name>Pull Ups</name><description>
+          The pull up is perhaps the best exercise you can
+          do if you want to build a strong, lean upper body.
+          All you need is a bar that will support your weight.
+        </description><video>http://youtu.be/mRznU6pzez0</video></exercises><exercises><sequence>3</sequence><name>Squats</name><description>
+          The squat is the king of lower body exercises.
+          A properly executed squat is not only safe (opposed to what some people claim)
+          but also involves all lower body muscles in addition to upper body ones as well.
+          In order to have well developed legs, the Squat is a must!
+        </description><video>http://youtu.be/Dy28eq2PjcM</video></exercises><exercises><sequence>4</sequence><name>Crunches</name><description>
+          The crunch is one of the most common abdominal exercises.
+          It primarily works the rectus abdominis muscle.
+        </description><video>http://youtu.be/Xyd_fa5zoEU</video></exercises><exercises><sequence>5</sequence><name>Triceps</name><description>The triceps extension is one of the best bodybuilding exercises for isolating the triceps muscles.</description><video>http://youtu.be/PserUqF1jV4</video></exercises></exercises></data><data number="2" type="paid"><title>Rossiter Techniques</title><text>12 high intensity bodyweight exercises. 30 seconds per exercise, 10 seconds rest between exercise.</text><exercises><exercises><sequence>1</sequence><name>Push Ups</name><description>Push ups description.</description><video>http://youtu.be/Eh00_rniF8E</video></exercises><exercises><sequence>2</sequence><name>Push Ups</name><description>Push ups description.</description><video>http://youtu.be/mRznU6pzez0</video></exercises><exercises><sequence>3</sequence><name>Squats</name><description>Squats description.</description><video>http://youtu.be/Dy28eq2PjcM</video></exercises><exercises><sequence>4</sequence><name>Crunches</name><description>Crunches description.</description><video>http://youtu.be/Xyd_fa5zoEU</video></exercises><exercises><sequence>5</sequence><name>Triceps</name><description>Triceps description.</description><video>http://youtu.be/PserUqF1jV4</video></exercises></exercises></data><data number="3" type="paid"><title>Rossiter Techniques</title><text>12 high intensity bodyweight exercises. 30 seconds per exercise, 10 seconds rest between exercise.</text><exercises><exercises><sequence>1</sequence><name>Push Ups</name><description>Push ups description.</description><video>http://youtu.be/Eh00_rniF8E</video></exercises><exercises><sequence>2</sequence><name>Push Ups</name><description>Push ups description.</description><video>http://youtu.be/mRznU6pzez0</video></exercises><exercises><sequence>3</sequence><name>Squats</name><description>Squats description.</description><video>http://youtu.be/Dy28eq2PjcM</video></exercises><exercises><sequence>4</sequence><name>Crunches</name><description>Crunches description.</description><video>http://youtu.be/Xyd_fa5zoEU</video></exercises><exercises><sequence>5</sequence><name>Triceps</name><description>Triceps description.</description><video>http://youtu.be/PserUqF1jV4</video></exercises></exercises></data><data number="4" type="paid"><title>Rossiter Techniques</title><text>12 high intensity bodyweight exercises. 30 seconds per exercise, 10 seconds rest between exercise.</text><exercises><exercises><sequence>1</sequence><name>Push Ups</name><description>Push ups description.</description><video>http://youtu.be/Eh00_rniF8E</video></exercises><exercises><sequence>2</sequence><name>Push Ups</name><description>Push ups description.</description><video>http://youtu.be/mRznU6pzez0</video></exercises><exercises><sequence>3</sequence><name>Squats</name><description>Squats description.</description><video>http://youtu.be/Dy28eq2PjcM</video></exercises><exercises><sequence>4</sequence><name>Crunches</name><description>Crunches description.</description><video>http://youtu.be/Xyd_fa5zoEU</video></exercises><exercises><sequence>5</sequence><name>Triceps</name><description>Triceps description.</description><video>http://youtu.be/PserUqF1jV4</video></exercises></exercises></data></root>

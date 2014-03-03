@@ -1,0 +1,168 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent WebKit from resizing text to fit */
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+}
+
+body {
+    background-color:#F0F0F0 ;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+
+#div1
+{
+background-color:#FFFFFF;
+border-style:0.5px solid #F0F0F0;
+padding-top:1em;
+padding-bottom:1em;
+border:0.1em solid #ffffff;
+border-bottom-color:#E0E0E0;
+position:fixed;
+width:100%;
+top:0;
+overflow:vigible;
+
+}
+h4
+{
+color:#FFFFFF;
+font-size:15px;
+}
+#subhead
+{
+font-size:15px;
+margin-top:1.5em;
+margin-bottom:1em;
+}
+
+h1 {
+    font-weight:normal;
+    margin:0px;
+    margin-top:0em;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+    padding-top:0.3em;
+}
+h3{
+
+}
+#sequence
+{
+	display: inline-block;
+    margin: 0.55em;
+    float:left;
+    text-align: center;
+    overflow: visible;
+    
+}
+
+#name
+{
+display: inline-block;
+    margin: 0;
+    padding: 0px;
+    padding-top:0.6em;
+    margin-left:;
+    width:55%;
+    font-size:17px;
+    
+   
+}
+#de
+{
+ color:#909090;
+ margin-top:7px;
+ font-size:14px;
+ 5px;
+ }
+
+#go
+{
+display: inline-block;
+    margin: 0;
+    padding:1px;
+    margin-top:34px;
+    float:right;
+    margin-right:13px;
+      
+}
+
+#go img
+{
+height:1.5em;
+width:1.5em;
+}
+
+#list
+{
+ overflow: visible;
+}
+
+#onelist
+{
+color:#000;
+border:solid #ffffff;
+border-bottom-color:#E8E8E8 ;
+border-bottom-width:0.07em;
+}
+a:link {text-decoration:none;}   
+a:visited {text-decoration:none;} 
+a:hover {text-decoration:none;}  
+a:active {text-decoration:none;}  
+
+.button {
+ 
+  background-color: #ffffff;
+  color:#505050  ;
+  text-decoration:none;
+  margin-top: 10px;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  padding-left:2em;
+  padding-right:2em;
+  text-align:center;
+  font-size:16px;0
+  opacity:0.8;
+  border:2px solid #E0E0E0;
+ 
+}
+#listcontainer
+{
+width:91%;
+margin-top:11.6em;
+background-color:#ffffff;
+border:0.07em solid #E0E0E0;
+overflow-y: scroll;
+}
+#update
+{
+width:95%;
+}
+#footer
+{
+border:1px solid #ffffff;
+border-top-color:#E0E0E0;
+}
